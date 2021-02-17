@@ -2,15 +2,11 @@
     <h1>Welcome to SoftUni Wiki!</h1>
     {{>notification}}
     <section>
-        <h2>All articles</h2>
-        <div class="spacer">
-            <ul>
-                {{#each articles}}
-                    <li>
-                        <a href="/articles/details/{{_id}}">{{title}}</a>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
+        {{#if filter}}
+            <h2>Search results for: "{{filter}}"</h2>
+        {{else}}
+            <h2>All articles</h2>
+        {{/if}}
+        {{>article-data}}
     </section>
 </main>

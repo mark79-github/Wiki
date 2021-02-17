@@ -1,11 +1,13 @@
 <article>
     <h3>{{title}}</h3>
-    <!--    <p>{{words}}...</p>-->
     <p>
         {{#each words}}
-            {{this}}
+            {{#if @last}}
+                {{this}}...
+            {{else}}
+                {{this}}
+            {{/if}}
         {{/each}}
-        ...
     </p>
     <div class="controls">
         <a href="/articles/details/{{_id}}">Read more</a>

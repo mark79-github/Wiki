@@ -2,7 +2,6 @@ const {Router} = require('express');
 const {articleService} = require('../services');
 const {isLogged, isCreator} = require('../middlewares');
 
-
 const router = Router();
 
 router.get('/', (req, res, next) => {
@@ -18,7 +17,7 @@ router.post('/search', (req, res, next) => {
 
     articleService.getAll(filter)
         .then((articles) => {
-            res.render('articles/search', {articles, filter});
+            res.render('articles/articles', {articles, filter});
         })
         .catch(next);
 });
@@ -56,10 +55,8 @@ router.get('/edit/:articleId', (req, res, next) => {
 
 router.post('/edit/:articleId', (req, res, next) => {
     const articleId = req.params.articleId;
-    // console.log('articleId', articleId);
     articleService.edit(articleId, req.body)
-        .then((response) => {
-            // console.log('response', response);
+        .then(() => {
             res.redirect(`/articles/details/${articleId}`);
         })
         .catch(next);

@@ -11,8 +11,6 @@ router.get('/login', isGuest, (req, res) => {
 });
 
 router.post('/login', isGuest, validate.user.login, (req, res) => {
-
-
     userService.login(req.body)
         .then((token) => {
             if (!token) {
@@ -33,13 +31,6 @@ router.get('/register', isGuest, (req, res) => {
 });
 
 router.post('/register', isGuest, validate.user.register, (req, res) => {
-    // try {
-    //     await userService.register(req.body);
-    //     res.redirect('/users/login');
-    // } catch (err) {
-    //     res.render('users/register', {message: err.message});
-    // }
-
     userService.register(req.body)
         .then(() => {
             return userService.login(req.body);
