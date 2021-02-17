@@ -28,7 +28,8 @@ router.get('/details/:articleId', (req, res, next) => {
     const articleId = req.params.articleId;
     articleService.getById(articleId)
         .then((article) => {
-            res.render('articles/details', {...article});
+            const paragraphs = article.description.split(/\r?\n/);
+            res.render('articles/details', {...article, description: paragraphs});
         })
         .catch(next);
 });
@@ -42,7 +43,18 @@ router.get('/edit/:articleId', (req, res, next) => {
         .catch(next);
 });
 
-router.get('/edit/:articleId', (req, res, next) => {
+router.post('/edit/:articleId', (req, res, next) => {
+    const articleId = req.params.articleId;
+    console.log('articleId', articleId);
+    articleService.edit(articleId, req.body)
+        .then((response) => {
+            console.log('response', response);
+            res.redirect(`/articles/details/${articleId}`);
+        })
+        .catch(next);
+});
+
+router.get('/delete/:articleId', (req, res, next) => {
     const articleId = req.params.articleId;
     articleService.remove(articleId)
         .then(() => {

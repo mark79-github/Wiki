@@ -17,11 +17,13 @@
         <nav>
             <a href="/">Main Page</a>
             <a href="/articles">All Articles</a>
-            <form>
-                <input type="text">
+            <form method="post">
+                <input type="text" name="filter-title">
                 <input type="submit" value="Search">
             </form>
-            <a href="/articles/create">Create New Article</a>
+            {{#if isLogged}}
+                <a href="/articles/create">Create New Article</a>
+            {{/if}}
         </nav>
     </aside>
     <div id="container">

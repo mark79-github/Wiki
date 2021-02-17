@@ -29,7 +29,7 @@ router.post('/login', isGuest, validate.user.login, (req, res) => {
             }
             return res
                 .cookie(config.authCookie, token, cookieOptions)
-                .redirect('/products');
+                .redirect('/');
         })
         .catch((error) => {
             res.render('users/login', {message: error.message});

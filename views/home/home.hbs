@@ -1,3 +1,9 @@
 <main>
-    <h2>Main</h2>
+    <h1>Welcome to SoftUni Wiki!</h1>
+    <section id="featured">
+        <h2>Latest articles</h2>
+        {{#each articles}}
+            {{>article}}
+        {{/each}}
+    </section>
 </main>
