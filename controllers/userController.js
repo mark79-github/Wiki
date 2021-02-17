@@ -12,21 +12,13 @@ router.get('/login', isGuest, (req, res) => {
 
 router.post('/login', isGuest, validate.user.login, (req, res) => {
 
-    const cookieOptions = {maxAge: 1000 * 60 * 60, httpOnly: true}
-
-    // try {
-    //     let token = userService.login(req.body);
-    //     res.cookie(config.authCookie, token, cookieOptions);
-    //     res.redirect('/products');
-    // } catch (error) {
-    //     res.render('users/login', {message: error.message});
-    // }
 
     userService.login(req.body)
         .then((token) => {
             if (!token) {
                 throw {message: msg.WRONG_CREDENTIALS};
             }
+            const cookieOptions = {maxAge: 1000 * 60 * 60, httpOnly: true}
             return res
                 .cookie(config.authCookie, token, cookieOptions)
                 .redirect('/');
@@ -50,7 +42,16 @@ router.post('/register', isGuest, validate.user.register, (req, res) => {
 
     userService.register(req.body)
         .then(() => {
-            res.redirect('/users/login');
+            return userService.login(req.body);
+        })
+        .then((token) => {
+            if (!token) {
+                throw {message: msg.WRONG_CREDENTIALS};
+            }
+            const cookieOptions = {maxAge: 1000 * 60 * 60, httpOnly: true}
+            return res
+                .cookie(config.authCookie, token, cookieOptions)
+                .redirect('/');
         })
         .catch(error => {
             res.render('users/register', {message: error.message});
