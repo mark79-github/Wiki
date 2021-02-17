@@ -6,8 +6,15 @@ function create(data, userId) {
     return article.save();
 }
 
-function getAll() {
+function getAll(query) {
+    let queryParams = {};
+
+    if (query) {
+        queryParams.title = new RegExp(query, 'i');
+    }
+
     return Article.aggregate()
+        .match(queryParams)
         .project({
             "title": 1,
         });
@@ -53,7 +60,6 @@ function getById(articleId) {
 }
 
 function edit(articleId, data) {
-    console.log(data);
     return Article.findByIdAndUpdate(articleId, data);
 }
 

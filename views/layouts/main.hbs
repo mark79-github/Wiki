@@ -17,8 +17,8 @@
         <nav>
             <a href="/">Main Page</a>
             <a href="/articles">All Articles</a>
-            <form method="post">
-                <input type="text" name="filter-title">
+            <form action="/articles/search" method="post">
+                <input type="text" name="filter" id="filter-title">
                 <input type="submit" value="Search">
             </form>
             {{#if isLogged}}

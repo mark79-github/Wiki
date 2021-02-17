@@ -1,6 +1,6 @@
 * {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /*
@@ -52,7 +52,7 @@ aside {
 
 nav > a {
     display: block;
-    margin: 10px 0;
+    margin: 10px 0px;
 }
 
 header {
@@ -61,7 +61,7 @@ header {
 }
 
 header a {
-    margin: 0 10px;
+    margin: 0px 10px;
 }
 
 main {
@@ -96,7 +96,7 @@ section {
 
 article {
     padding: 20px;
-	display: inline-block;
+    display: inline-block;
 }
 
 .controls {
@@ -105,7 +105,7 @@ article {
     margin: 10px 0;
 }
 
-.controls a{
+.controls a {
     margin-right: 10px;
 }
 
@@ -114,7 +114,7 @@ ul {
     list-style-type: none;
 }
 
-ul>li {
+ul > li {
     margin: 10px 0;
 }
 
@@ -156,7 +156,7 @@ h2 a {
     font-size: 0.75em;
 }
 
-article>p {
+article > p {
     margin-bottom: 20px;
 }
 
@@ -165,20 +165,20 @@ article>p {
 }
 
 .spacer li {
-	font-size: 24px;
+    font-size: 24px;
 }
 
 #notifications {
-	width: 100%;
-	margin-top: 1%;
-	border-radius: 6px;
-	background-color: #FA8072;
+    width: 100%;
+    margin-top: 1%;
+    border-radius: 6px;
+    background-color: #FA8072;
 }
 
-#notifications p{
-	color: white;
-	font-style: italic;
-	text-align: center;
+#notifications p {
+    color: white;
+    font-style: italic;
+    text-align: center;
 }
 
 footer {
@@ -188,4 +188,8 @@ footer {
     padding: 20px;
     background-color: #5d89a1;
     color: white;
+}
+
+#filter-title {
+    width: 100%;
 }
